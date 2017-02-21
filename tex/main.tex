@@ -1,0 +1,84 @@
+\documentclass[sigconf, screen]{acmart}
+% \documentclass{sig-alternate-10pt}
+
+\settopmatter{printacmref=false} % Removes citation information below abstract
+\renewcommand\footnotetextcopyrightpermission[1]{} % removes footnote with conference information in first column
+\pagestyle{plain} % removes running headers
+
+% \newif\ifdebugdoc\debugdocfalse
+\newif\ifdebugdoc\debugdoctrue
+% \newif\ifflow\flowfalse
+\newif\ifflow\flowtrue
+
+\input{preamble-wing}
+
+% \usepackage{minted}
+% \usepackage{mdframed}
+% \surroundwithmdframed{minted}
+
+% Copyright
+\setcopyright{none}
+
+% DOI
+\acmDOI{10.475/123_4}
+
+% ISBN
+\acmISBN{123-4567-24-567/08/06}
+
+% Conference
+\acmConference[MobiCom'17]{ACM MobiCom}{October 2017}{UT USA}
+\acmYear{2017}
+\copyrightyear{2017}
+
+\acmPrice{15.00}
+
+\begin{document}
+
+\title{Your submission title}
+% \titlenote{}
+\subtitle{Paper \#xxx, 12 pages}
+% \subtitlenote{}
+
+% \author{Joe Bruin}
+% \affiliation{%
+%   \institution{University of California, Los Angeles}
+%   \streetaddress{Computer Science Department}
+%   \city{Los Angeles}
+%   \state{California}
+%   \postcode{90095}
+% }
+% \email{zyuan@cs.ucla.edu}
+
+\maketitle
+
+% \balance
+
+%% Submission guidelines:
+%% Maximum of 12 pages excluding references
+%% The PDF file must not contain any hyper-links
+
+\input{abstract.tex}
+
+\input{intro.tex}
+% \input{background.tex}
+% \input{overview.tex}
+% \input{algo.tex}
+% \input{experiment.tex}
+% \input{discussion.tex}
+% \input{related.tex}
+% \input{concl.tex}
+
+
+%%%%%%%%%%%%%%
+% References %
+%%%%%%%%%%%%%%
+% \newpage
+% \small
+
+\bibliographystyle{../bib/ACM-Reference-Format}
+% \bibliographystyle{../bib/unsrtabbrv}
+\bibliography{../bib/wing,../bib/cellular,../bib/misc,../bib/standard}
+
+% \input{appendix}
+
+\end{document}

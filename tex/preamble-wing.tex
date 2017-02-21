@@ -1,0 +1,139 @@
+%
+% Preamble file for ACM SIG conference paper submission
+% WiNG lab @ UCLA
+% v2.0 2017/02/20
+%
+
+%% Debug version and clean version
+\ifdebugdoc
+    %% Writing Mode
+    \newcommand{\outline}[1]{\textbf{\colorbox{yellow}{Outline:}\textcolor{red}{#1.}}}
+    \newcommand{\remind}[1]{\footnote{\textit{[\uwave{Remind:} #1]}}}
+    \newcommand{\repl}[2]{\textcolor{red}{#1}\textcolor{blue}{\sout{#2}}}
+    \newcommand{\add}[1]{\textcolor{red}{#1}}
+    \newcommand{\del}[1]{\textcolor{blue}{\sout{#1}}}
+    \newcommand{\old}[1]{\large{\colorbox{blue}{Former: #1}}}
+    \newcommand{\zengwen}[1]{\textcolor{blue}{Zengwen: #1}}
+    \newcommand{\yuanjie}[1]{\textcolor{red}{Yuanjie: #1}}
+\else
+    %% Submission Mode
+    \newcommand{\outline}[1]{}
+    \newcommand{\remind}[1]{#1}
+    \newcommand{\repl}[2]{#1}
+    \newcommand{\add}[1]{#1}
+    \newcommand{\del}[1]{}
+    \newcommand{\old}[1]{}
+    \newcommand{\zengwen}[1]{}
+    \newcommand{\yuanjie}[1]{}
+\fi
+
+%% Flow version and clean version
+\ifflow
+    %% Organize flow
+    \newcommand{\p}[1]{\vskip 1ex\noindent\colorbox{yellow}{\parbox{\columnwidth}{\textbf{Point:} #1}}}
+    \newcommand{\q}[1]{\vskip 1ex\noindent\colorbox{cyan}{\parbox{\columnwidth}{\textbf{Question:} #1}}}
+\else
+    %% Remove flow
+    \newcommand{\p}[1]{}
+    \newcommand{\q}[1]{}
+\fi
+
+%% Paragraph highlight
+\newcommand{\paragraphb}[1]{\vspace{1mm}\noindent{\bf #1}\quad}
+\newcommand{\paragraphe}[1]{\vspace{2mm}\noindent{{\em  #1}} \vspace{1mm}}
+\newcommand{\paragraphbe}[1]{\vspace{2mm}\noindent{\bf \em #1} \quad}
+\newcommand{\paragraphbb}[1]{\vspace{1mm}\noindent{\bf #1}\quad}
+
+%% Reference shortcuts
+\newcommand{\secref}[1]{Section~\cite{#1}}
+\newcommand{\figref}[1]{Figure~\cite{#1}}
+\newcommand{\tabref}[1]{Table~\cite{#1}}
+\newcommand{\algref}[1]{Algorithm~\cite{#1}}
+
+%% Common abbreviations
+\def\ie{\textit{i.e.}\xspace}
+\def\eg{\textit{e.g.}\ }
+\def\etal{\textit{et al}\xspace}
+\def\etc{\textit{etc}\xspace}
+\def\wrt{\textit{w.r.t.}\xspace}
+\def\volte{VoLTE\xspace}
+\def\pfi{Project Fi\xspace}
+\def\sol{\textsc{Solution}\xspace}
+
+%% Space hacks
+\newcommand{\interfigskip}{\vspace{-12pt}}
+\newcommand{\listskipsmall}{\vspace{-3pt}}
+\newcommand{\listskipmed}{\vspace{-5pt}}
+
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{xspace}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{balance}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{verbatim}
+\usepackage{algorithm}
+% \usepackage{algorithmicx}
+% \usepackage{algpseudocode}
+
+
+%% ---------------------- %%
+%%   HISTORICAL OPTIONS   %%
+%% ---------------------- %%
+
+% \usepackage{times}
+% \usepackage[letterpaper, margin=1in]{geometry}
+% \usepackage[labelfont={small,bf},textfont={bf,small}]{caption}
+% \captionsetup[subfloat]{labelfont={small},textfont={small}}
+% \usepackage[captionskip=0pt, font={small}]{subfig}
+% \usepackage[usenames,dvipsnames]{color}
+% \usepackage[draft]{hyperref}
+% \usepackage{acmcopyright}
+
+% \usepackage[T1]{fontenc}
+% \usepackage[utf8]{inputenc}
+% \usepackage{listings}
+% \lstset{
+%     belowskip=-1em,
+% }
+
+% \usepackage{titlesec}
+% \titleformat{\section}
+% {\normalfont\Large\bfseries}{\thesection}{1em}{}
+% \titleformat{\subsection}
+% {\normalfont\large\bfseries}{\thesubsection}{1em}{}
+% \titleformat{\subsubsection}
+% {\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+% \titleformat{\paragraph}[runin]
+% {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+% \titleformat{\subparagraph}[runin]
+% {\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
+
+% \algnewcommand\algorithmicswitch{\textbf{switch}}
+% \algnewcommand\algorithmiccase{\textbf{case}}
+
+% \usepackage{algpseudocode}
+% % New definitions
+% \algnewcommand\algorithmicswitch{\textbf{switch}}
+% \algnewcommand\algorithmiccase{\textbf{case}}
+% \algnewcommand\algorithmicassert{\texttt{assert}}
+% \algnewcommand\And{\textbf{and}\xspace}
+% \algnewcommand\Assert[1]{\State \algorithmicassert(#1)}%
+% % New "environments"
+% \algdef{SE}[SWITCH]{Switch}{EndSwitch}[1]{\algorithmicswitch\ #1\ \algorithmicdo}{\algorithmicend\ \algorithmicswitch}%
+% \algdef{SE}[CASE]{Case}{EndCase}[1]{\algorithmiccase\ #1:}{\algorithmicend\ \algorithmicswitch}%
+% % \algdef{SE}[DEFAULT]{Default}{EndCase}{\algorithmicdefault:}{\algorithmicend\ \algorithmicswitch}%
+% \algtext*{EndSwitch}%
+% \algtext*{EndCase}%
+
+% \newcommand{\SWITCH}[1]{\State \textbf{switch} (#1)}
+% \newcommand{\ENDSWITCH}{\State \textbf{end switch}}
+% \newcommand{\CASE}[1]{\State \textbf{case} #1\textbf{:} \begin{ALC@g}}
+% \newcommand{\ENDCASE}{\end{ALC@g}}
+% \newcommand{\CASELINE}[1]{\State \textbf{case} #1\textbf{:} }
+% \newcommand{\DEFAULT}{\State \textbf{default:} \begin{ALC@g}}
+% \newcommand{\ENDDEFAULT}{\end{ALC@g}}
+% \newcommand{\DEFAULTLINE}[1]{\State \textbf{default:} }
