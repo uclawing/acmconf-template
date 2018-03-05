@@ -101,6 +101,14 @@ Computing Machinery]
   \fi}{\PackageError{\@classname}{Option anonymous can be either true or
     false}}
 \ExecuteOptionsX{anonymous=false}
+\define@boolkey+{acmart.cls}[@ACM@]{timestamp}[true]{%
+  \if@ACM@timestamp
+    \PackageInfo{\@classname}{Using timestamp mode}%
+  \else
+    \PackageInfo{\@classname}{Not using timestamp mode}%
+  \fi}{\PackageError{\@classname}{The option timestamp can be either true or
+    false}}
+\ExecuteOptionsX{timestamp=false}
 \def\ACM@fontsize{}
 \DeclareOptionX{9pt}{\edef\ACM@fontsize{\CurrentOption}}
 \DeclareOptionX{10pt}{\edef\ACM@fontsize{\CurrentOption}}
@@ -1858,6 +1866,20 @@ Computing Machinery]
     \put(-26,-22){\usebox{\ACM@linecount@bx}}%
   \end{picture}%
   \fi}
+\if@ACM@timestamp
+  % Subtracting 30 from \time gives us the effect of rounding down despite
+  % \numexpr rounding to nearest
+  \newcounter{ACM@time@hours}
+  \setcounter{ACM@time@hours}{\numexpr (\time - 30) / 60 \relax}
+  \newcounter{ACM@time@minutes}
+  \setcounter{ACM@time@minutes}{\numexpr \time - \theACM@time@hours * 60 \relax}
+  \newcommand\ACM@timestamp{%
+    \footnotesize%
+    \the\year-\two@digits{\the\month}-\two@digits{\the\day}{ }%
+    \two@digits{\theACM@time@hours}:\two@digits{\theACM@time@minutes}{. }%
+    Page \thepage\ of \@startPage--\pageref*{TotPages}.%
+  }
+\fi
 \def\@shortauthors{\if@ACM@anonymous Anon.\else\shortauthors\fi}
 \def\@headfootfont{%
   \ifcase\ACM@format@nr
@@ -1879,7 +1901,11 @@ Computing Machinery]
     \sffamily
   \or % sigchi-a
     \sffamily
-  \fi}
+  \fi
+  \if@ACM@timestamp
+     \fancyfoot[LO,RE]{\ACM@timestamp}
+  \fi
+  }
 \fancypagestyle{standardpagestyle}{%
   \fancyhf{}%
   \renewcommand{\headrulewidth}{\z@}%
@@ -2000,6 +2026,9 @@ Computing Machinery]
   \else % Conference proceedings
     \fancyhead[L]{\ACM@linecount}%
     \fancyfoot[C]{\if@ACM@printfolios\footnotesize\thepage\fi}%
+  \fi
+  \if@ACM@timestamp
+    \fancyfoot[LO,RE]{\ACM@timestamp}
   \fi
 }
 \renewcommand\section{\@startsection{section}{1}{\z@}%
